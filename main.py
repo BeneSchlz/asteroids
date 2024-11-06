@@ -2,20 +2,31 @@ import pygame
 from constants import *
 
 def main():
-  pygame.init()
-  screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-  
-  while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            return
+    pygame.init()
 
+    # Create the display
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    
+    # Set up the clock for limiting FPS
+    clock = pygame.time.Clock()
+    
+    # Initialize delta time
+    dt = 0
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return
+
+        # Fill the screen with black (background color)
         screen.fill("black")
+        
+        # Update the display
         pygame.display.flip()
-     
-  
+        
+        # Control the frame rate and calculate delta time
+        dt = clock.tick(60) / 1000  # Limits to 60 FPS, converts milliseconds to seconds
 
 if __name__ == "__main__":
     main()
-
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
