@@ -27,13 +27,13 @@ class Player(CircleShape):
 
         if keys [pygame.K_d]:
             self.rotate(dt)
-             
+
         if keys[pygame.K_w]:
-            self.move(dt)  # Move forward
+            self.move(-dt)  # Move forward
 
         # Move backward if the "S" key is pressed
         if keys[pygame.K_s]:
-            self.move(-dt)
+            self.move(dt)
 
     def move(self, dt):
         # Create a forward vector and rotate it to match the player's rotation
