@@ -12,6 +12,9 @@ def main():
     clock = pygame.time.Clock()
 
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
+    updatable = [player]
+    drawable = [player]
     
     # Initialize delta time
     dt = 0
@@ -25,9 +28,12 @@ def main():
         # Fill the screen with black (background color)
         screen.fill("black")
 
-        player.update(dt)
+        for obj in updatable:
+            obj.update(dt)
 
-        player.draw(screen)
+        # Draw all objects in the drawable group
+        for obj in drawable:
+            obj.draw(screen)
         
         # Update the display
         pygame.display.flip()
