@@ -1,5 +1,6 @@
 import pygame
 from constants import *
+from player import Player
 
 def main():
     pygame.init()
@@ -9,6 +10,8 @@ def main():
     
     # Set up the clock for limiting FPS
     clock = pygame.time.Clock()
+
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     
     # Initialize delta time
     dt = 0
@@ -21,12 +24,15 @@ def main():
 
         # Fill the screen with black (background color)
         screen.fill("black")
+
+        player.draw(screen)
         
         # Update the display
         pygame.display.flip()
         
         # Control the frame rate and calculate delta time
         dt = clock.tick(60) / 1000  # Limits to 60 FPS, converts milliseconds to seconds
+        
 
 if __name__ == "__main__":
     main()
