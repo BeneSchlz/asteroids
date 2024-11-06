@@ -25,6 +25,8 @@ def main():
         # Fill the screen with black (background color)
         screen.fill("black")
 
+        player.update(dt)
+
         player.draw(screen)
         
         # Update the display
